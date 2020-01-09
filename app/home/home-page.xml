@@ -1,12 +1,65 @@
 <Page
     navigatingTo="onNavigatingTo"  
-    xmlns="http://schemas.nativescript.org/tns.xsd">
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:df="nativescript-ui-dataform">
 
-    <ActionBar>
-        <Label text="Home"></Label>
-    </ActionBar>
+    <ActionBar title="Field Service Report" backgroundColor="#079"/>
 
-    <GridLayout>
-        <!-- Add your page content here -->
-    </GridLayout>
+    <StackLayout style="padding-top: 10">
+        <df:RadDataForm id="theForm" source="{{form}}" isReadOnly="{{isLoading}}">
+            <df:RadDataForm.groups>
+
+                <df:PropertyGroup name="Form" titleHidden="true">
+                    <df:PropertyGroup.layout>        
+                        <df:DataFormGridLayout/>        
+                    </df:PropertyGroup.layout>
+
+                    <df:PropertyGroup.properties>
+                        <df:EntityProperty name="date" index="0" columnIndex="0">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="DatePicker"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                        <df:EntityProperty name="hours" index="0" columnIndex="1">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Decimal"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                        <df:EntityProperty name="jcah" displayName="JCAH" index="0" columnIndex="2">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="CheckBox"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                        <df:EntityProperty name="placements" index="1" columnIndex="0">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Stepper"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                        <df:EntityProperty name="videos" index="1" columnIndex="1">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Stepper"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                        <df:EntityProperty name="rvs" displayName="RVs" index="1" columnIndex="2">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="Stepper"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                    </df:PropertyGroup.properties>
+                </df:PropertyGroup>
+                <df:PropertyGroup>
+                    <df:PropertyGroup.properties>
+                        <df:EntityProperty name="notes" index="2">
+                            <df:EntityProperty.editor>
+                                <df:PropertyEditor type="MultilineText"/>
+                            </df:EntityProperty.editor>
+                        </df:EntityProperty>
+                    </df:PropertyGroup.properties>
+                </df:PropertyGroup>
+                
+            </df:RadDataForm.groups>
+        </df:RadDataForm>
+        <Button text="Submit" backgroundColor="#09b" color="white" tap="onSubmit" style="margin-top: 20" isEnabled="{{!isLoading}}"/>
+        <ActivityIndicator busy="{{isLoading}}" />
+    </StackLayout>
 </Page>

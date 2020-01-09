@@ -13,6 +13,7 @@
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/theme": "~2.2.0",
+    "nativescript-ui-dataform": "6.0.0",
     "tns-core-modules": "~6.2.0"
   },
   "devDependencies": {

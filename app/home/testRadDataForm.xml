@@ -1,0 +1,37 @@
+<Page
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd"
+    xmlns:df="nativescript-ui-dataform">
+
+    <ActionBar title="Field Service Report" />
+
+    <df:RadDataForm id="theForm" source="{{album}}">
+        <df:RadDataForm.groups>
+            <df:PropertyGroup collapsible="true" name="Album Info">
+                <df:PropertyGroup.properties>
+                    <df:EntityProperty name="albumName" displayName="Name of Album" index="0" />
+                    <df:EntityProperty name="bandName" displayName="Name of Band" index="1" />
+                    <df:EntityProperty name="year" displayName="Release Year" index="2">
+                        <df:EntityProperty.editor>
+                            <df:PropertyEditor type="Number" />
+                        </df:EntityProperty.editor>
+                    </df:EntityProperty>
+                </df:PropertyGroup.properties>
+            </df:PropertyGroup>
+            <df:PropertyGroup collapsible="true" name="My Info">
+                <df:PropertyGroup.properties>
+                    <df:EntityProperty name="myRating" displayName="My Rating" index="3">
+                        <df:EntityProperty.editor>
+                            <df:PropertyEditor type="Slider">
+                                <df:PropertyEditor.params>
+                                    <df:PropertyEditorParams minimum="0" maximum="10" />
+                                </df:PropertyEditor.params>
+                            </df:PropertyEditor>
+                        </df:EntityProperty.editor>
+                    </df:EntityProperty>
+                    <df:EntityProperty name="owned" displayName="Do I Own This?" index="4" />
+                </df:PropertyGroup.properties>
+            </df:PropertyGroup>
+        </df:RadDataForm.groups>
+    </df:RadDataForm>
+</Page>
